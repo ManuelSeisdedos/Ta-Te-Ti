@@ -1,0 +1,34 @@
+body {
+    margin:0px;
+    height: 100vh;
+}
+
+.container { 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ta-te-ti { 
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ubicacion {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-color: black;
+}
+
+button {
+    cursor: pointer;
+}
