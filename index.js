@@ -1,12 +1,13 @@
 const botonesTateti = document.querySelectorAll(".ubicacion");
-const fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
-const tablero = [1,2,3,4,5,6,7,8,9]
+let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
+let tablero = [1,2,3,4,5,6,7,8,9]
 let termino = 0;
 let sonido = new Audio("/Ficha.mp3");
 
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
     boton.addEventListener("click", () => {
+        console.log(termino)
         if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
         sonido.play()
         jugador.innerHTML = fichas[0]
@@ -51,4 +52,14 @@ function terminoElJuego() {
         return `Ganó el jugador --> ${tablero[6]}`
     }
     if (fichas.length === 0) return "El juego terminó en empate"
+}
+
+function reinicio () {
+    fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
+    tablero = [1,2,3,4,5,6,7,8,9]
+    termino = 0;
+    botonesTateti.forEach(boton => {
+        boton.innerHTML = "";
+    })
+    console.log (fichas, tablero, termino)
 }
