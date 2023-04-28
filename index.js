@@ -7,8 +7,8 @@ let sonido = new Audio("/Ficha.mp3");
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
     boton.addEventListener("click", () => {
-        sonido.play()
         if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
+        sonido.play()
         jugador.innerHTML = fichas[0]
         ponerFicha(jugador.id)
         if (terminoElJuego() !== undefined) {
