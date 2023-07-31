@@ -1,7 +1,6 @@
-import { io } from 'socket.io-client'
 
 const botonesTateti = document.querySelectorAll(".ubicacion");
-const socket = io("http://localhost:3000")
+
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
