@@ -1,6 +1,8 @@
-
+import { on } from 'socket.io';
 const botonesTateti = document.querySelectorAll(".ubicacion");
-
+const ioEmit = on('connect', () => {
+    console.log("pulsacion")
+})
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
@@ -12,7 +14,7 @@ botonesTateti.forEach(boton => {
     boton.addEventListener("click", () => {
         if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
         sonido.play()
-        //ioEmit()
+        ioEmit
         jugador.innerHTML = fichas[0]
         ponerFicha(jugador.id)
         if (terminoElJuego() !== undefined) {
@@ -77,6 +79,3 @@ function reinicio () {
     })
 }
 
-const ioEmit = socket.emit('pulsacion', () => {
-    console.log("pulsacion")
-})

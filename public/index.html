@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Darumadrop+One" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display" />
-
-    <script src="index.js" type="text/javascript"  defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="index.js"  defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -33,5 +32,11 @@
             <button id="9" class="ubicacion"></button>
         </div>
     </div>
+    <script>
+        var socket = io()
+        socket.on('connect', () => {
+            console.log('Conectado al servidor')
+        })
+    </script>
 </body>
 </html>
