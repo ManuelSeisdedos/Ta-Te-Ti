@@ -1,7 +1,6 @@
 const socket = io()
 const botonesTateti = document.querySelectorAll(".ubicacion");
-
-
+const botonJuego = document.getElementById('juego');
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
@@ -37,9 +36,8 @@ if (jugador === "X") {
 document.getElementById("jugador1").innerHTML++
 } else {
 document.getElementById("jugador2").innerHTML++
-}
+}}
 
-}
 function terminoElJuego() {
     
     if (tablero[0] === tablero[1] && tablero[1] === tablero[2]) {
@@ -78,3 +76,6 @@ function reinicio () {
     })
 }
 
+function jugarTateti() {
+    console.log(socket.id)
+}
