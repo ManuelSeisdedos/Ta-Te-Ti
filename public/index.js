@@ -6,6 +6,10 @@ let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
 let termino = 0;
 let sonido = new Audio("Ficha.mp3");
+let jugadores = {
+    jugador1: "",
+    jugador2: ""
+}
 
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
@@ -39,7 +43,6 @@ document.getElementById("jugador2").innerHTML++
 }}
 
 function terminoElJuego() {
-    
     if (tablero[0] === tablero[1] && tablero[1] === tablero[2]) {
         return `Ganó el jugador --> ${tablero[0]}`
     }
@@ -77,5 +80,10 @@ function reinicio () {
 }
 
 function jugarTateti() {
-    console.log(socket.id)
+    if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") {
+        "No hay espacio disponible"
+    }
+    if (jugadores.jugador1 === "") jugadores.jugador1 === socket.id
+    if (jugadores.jugador2 === "") jugadores.jugador2 === socket.id
 }
+
