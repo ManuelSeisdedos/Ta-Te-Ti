@@ -3,6 +3,9 @@ body {
     margin:0px;
     height: 100vh;
     font-family: 'Crimson Pro', serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .container { 

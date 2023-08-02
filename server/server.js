@@ -15,7 +15,16 @@ app.use(express.static(publicPath));
 // IO = comunicacion directa con el servidor.
 let io = socketIO(server)
 
+app.get('/', (req, res) => {
+res.sendFile(path.resolve(__dirname, '../public'));
+});
 
+io.on("connection", (socket) => {
+    socket.on("hello", (arg) => {
+      console.log(arg); // world
+    });
+  });
+  
 server.listen(port, (err) => {
 
     if (err) throw new Error(err);

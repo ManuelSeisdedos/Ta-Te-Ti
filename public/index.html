@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Darumadrop+One" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display" />
     <script src="/socket.io/socket.io.js"></script>
-    <script type="module" src="index.js"  defer></script>
+    <script  src="index.js" type="text/javascript" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -32,11 +32,17 @@
             <button id="9" class="ubicacion"></button>
         </div>
     </div>
-    <script>
-        var socket = io()
-        socket.on('connect', () => {
-            console.log('Conectado al servidor')
-        })
-    </script>
+    <div class="chatpart">
+        <button>
+            Jugar
+        </button>
+        <div class="chat">
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <input type="text"> 
+            <button>Enviar</button>
+            </input>
+            
+        </div>
+    </div>
 </body>
 </html>
