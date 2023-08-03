@@ -13,21 +13,12 @@ let jugadores = {
 
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
-    boton.addEventListener("click", () => {
-        if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
-        sonido.play()
-        socket.emit("hello", "world");
-        jugador.innerHTML = fichas[0]
-        ponerFicha(jugador.id)
-        if (terminoElJuego() !== undefined) {
-            let jugador = terminoElJuego().slice(-1)
-            termino = 1
-            contador(jugador)
-            return setTimeout(() => alert(terminoElJuego()), 100)
-        }
+    boton.addEventListener('click', () => {
+        socket.emit('play:click', {
+            jugador: jugador.id,
+        })
     })
 })
-
 
 function ponerFicha(id) {
     id = id - 1
@@ -117,3 +108,16 @@ socket.on('chat:typing', function (data) {
     console.log(data)
     actions.innerHTML = `<p><em> ${data} esta escrbiendo un mensaje.. </em></p>`
 })
+
+socket.on('play:click', function (data) {
+    let jugador = document.getElementById(data.jugador)
+    if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
+        sonido.play()
+        jugador.innerHTML = fichas[0]
+        ponerFicha(jugador.id)
+        if (terminoElJuego() !== undefined) {
+            let jugador = terminoElJuego().slice(-1)
+            termino = 1
+            contador(jugador)
+            return setTimeout(() => alert(terminoElJuego()), 100)
+}})

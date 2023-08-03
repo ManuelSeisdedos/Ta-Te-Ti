@@ -29,4 +29,8 @@ io.on('connection', (socket) => {
     socket.on('chat:typing', (data) => {
       socket.broadcast.emit('chat:typing', data)
     })
+
+    socket.on('play:click', (data) => {
+      io.sockets.emit('play:click', data)
+    })
 });
