@@ -1,6 +1,7 @@
 const socket = io()
 const botonesTateti = document.querySelectorAll(".ubicacion");
 const botonJuego = document.getElementById('juego');
+const botonReiniciar = document.getElementById('reiniciar')
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
@@ -60,6 +61,21 @@ function terminoElJuego() {
     }
     if (fichas.length === 0) return "El juego terminó en empate"
 }
+
+
+botonReiniciar.addEventListener('click', function () {
+    socket.emit('play:reiniciar', "gola")
+})
+
+socket.on('play:reiniciar', () => {
+    console.log("holas")
+    fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
+    tablero = [1,2,3,4,5,6,7,8,9]
+    termino = 0;
+    botonesTateti.forEach(boton => {
+        boton.innerHTML = "";
+    })
+})
 
 function reinicio () {
     fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
@@ -121,3 +137,4 @@ socket.on('play:click', function (data) {
             contador(jugador)
             return setTimeout(() => alert(terminoElJuego()), 100)
 }})
+

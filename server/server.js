@@ -33,4 +33,8 @@ io.on('connection', (socket) => {
     socket.on('play:click', (data) => {
       io.sockets.emit('play:click', data)
     })
+
+    socket.on('play:reiniciar', (data) => {
+      io.sockets.emit('play:reiniciar')
+    })
 });
