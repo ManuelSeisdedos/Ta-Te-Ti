@@ -87,3 +87,33 @@ function jugarTateti() {
     if (jugadores.jugador2 === "") jugadores.jugador2 === socket.id
 }
 
+//DOM Elements
+let message = document.getElementById('mensaje')
+let username = document.getElementById('username')
+let btn = document.getElementById('send')
+let output = document.getElementById('output')
+let actions = document.getElementById('actions')
+
+btn.addEventListener('click', function () {
+    socket.emit('chat:message', {
+        message: message.value,
+        username: username.value
+    })
+    console.log(username.value, message.value)
+})
+
+socket.on('chat:message', function(data) {
+    actions.innerHTML = ''
+    output.innerHTML += `<p>
+    <strong> ${data.username} </strong>: ${data.message}
+    </p>`
+})
+
+message.addEventListener('keypress', function() {
+    socket.emit('chat:typing', username.value)
+})
+
+socket.on('chat:typing', function (data) {
+    console.log(data)
+    actions.innerHTML = `<p><em> ${data} esta escrbiendo un mensaje.. </em></p>`
+})

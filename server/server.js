@@ -20,8 +20,13 @@ let io = socketIO(server)
 
 // websockets
 io.on('connection', (socket) => {
-    console.log(socket.id)
-    socket.on("hello", (arg) => {
-      console.log(arg); // world
-    });
+    console.log('New connection', socket.id)
+
+    socket.on('chat:message', (data) => {
+      io.sockets.emit('chat:message', data)
+    })
+
+    socket.on('chat:typing', (data) => {
+      socket.broadcast.emit('chat:typing', data)
+    })
 });
