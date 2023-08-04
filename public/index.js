@@ -1,7 +1,8 @@
-const socket = io()
+const socket = io();
 const botonesTateti = document.querySelectorAll(".ubicacion");
 const botonJuego = document.getElementById('juego');
 const botonReiniciar = document.getElementById('reiniciar')
+const botonJugar = document.getElementById('jugar')
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
@@ -15,9 +16,14 @@ let jugadores = {
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
     boton.addEventListener('click', () => {
-        socket.emit('play:click', {
-            jugador: jugador.id,
-        })
+        if(socket.id === jugadores.jugador1 || socket.id === jugadores.jugador2) {
+            socket.emit('play:click', {
+                jugador: jugador.id,
+            })
+        } else {
+            return console.log("No eres jugador de la sala.")
+        }
+       
     })
 })
 
@@ -68,7 +74,8 @@ botonReiniciar.addEventListener('click', function () {
 })
 
 socket.on('play:reiniciar', () => {
-    console.log("holas")
+    jugadores.jugador1 = ""
+    jugadores.jugador2 = ""
     fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
     tablero = [1,2,3,4,5,6,7,8,9]
     termino = 0;
@@ -138,3 +145,11 @@ socket.on('play:click', function (data) {
             return setTimeout(() => alert(terminoElJuego()), 100)
 }})
 
+botonJugar.addEventListener('click', () => {
+    socket.emit('play:jugar', socket.id)
+})
+
+socket.on('play:jugar', (socket) => {
+    if (jugadores.jugaor1 !== "" && jugadores.jugador2 !== "") return "No hay mas lugares en la sala."
+    jugadores.jugador1 === "" ? jugadores.jugador1 = socket : jugadores.jugador2 = socket
+})
