@@ -1,12 +1,16 @@
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-const http = require('http')
-
+import express from 'express';
+import path from 'path';
+import * as socketIO from 'socket.io';
+import { resolve } from 'path';
+import { createServer } from 'http';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+console.log(socketIO)
 const port = process.env.PORT || 3000;
-const publicPath = path.resolve(__dirname, '../public');
+const publicPath = resolve(__dirname, '../public');
 const app = express();
-let server = http.createServer(app)
+let server = createServer(app)
 
 app.use(express.static(publicPath));
 
@@ -16,7 +20,7 @@ server.listen(port, (err) => {
 });
 
 // IO = comunicacion directa con el servidor.
-let io = socketIO(server)
+let io = new socketIO.Server(server)
 
 // websockets
 io.on('connection', (socket) => {
