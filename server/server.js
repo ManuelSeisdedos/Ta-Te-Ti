@@ -4,9 +4,9 @@ import * as socketIO from 'socket.io';
 import { resolve } from 'path';
 import { createServer } from 'http';
 import { fileURLToPath } from 'url';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-console.log(socketIO)
 const port = process.env.PORT || 3000;
 const publicPath = resolve(__dirname, '../public');
 const app = express();

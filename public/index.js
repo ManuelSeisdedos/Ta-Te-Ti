@@ -5,12 +5,11 @@ let btn = document.getElementById('send')
 let output = document.getElementById('output')
 let actions = document.getElementById('actions')
 const botonesTateti = document.querySelectorAll(".ubicacion");
-const botonJuego = document.getElementById('juego');
 const botonReiniciar = document.getElementById('reiniciar')
 const botonJugar = document.getElementById('jugar')
 
 import helper from './helpers.js'
-console.log(helper)
+
 const socket = io();
 
 
@@ -22,7 +21,7 @@ botonesTateti.forEach(boton => {
 })
 
 botonReiniciar.addEventListener('click', function () {
-    socket.emit('play:reiniciar', "gola")
+    socket.emit('play:reiniciar')
 })
 
 socket.on('play:reiniciar', () => {

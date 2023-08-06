@@ -21,6 +21,7 @@ function contador(jugador) {
 
 function terminoElJuego() {
     if (tablero[0] === tablero[1] && tablero[1] === tablero[2]) {
+        console.log(tablero[0])
         return `Ganó el jugador --> ${tablero[0]}`
     }
     if (tablero[3] === tablero[4] && tablero[4] === tablero[5]) {

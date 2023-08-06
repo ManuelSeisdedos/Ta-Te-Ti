@@ -30,9 +30,7 @@ body {
     height: 40px;
     font-size: large;
     color: white;
-    background-color: black;
     border-radius: 10px;
-    border: 2px solid black;
     border-color: rgb(111, 4, 4);
     padding: 0px 20px;
     font-family: "Playfair Display";
@@ -58,8 +56,8 @@ body {
 .ubicacion {
     width: 100%;
     height: 100%;
-    border-color: black;
-    background-image:radial-gradient(closest-side, white, rgb(197, 197, 197))
+    border-color: #575ed8;
+    background-image:radial-gradient(closest-side, white,#afb3fb)
 }
 
 .ta-te-ti button {
@@ -122,3 +120,20 @@ input {
     color: #555;
 }
 
+#jugar {
+    background: #575ed8;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+#reiniciar {
+    cursor: pointer;
+    background: #575ed8;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 0px 20px;
+}
