@@ -81,6 +81,7 @@ function click (jugador) {
 }
 
 function jugar(socket) {
+    if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") return console.log("Se esta jugando una partida, espera tu turno")
     jugadores.jugador1 === "" ? jugadores.jugador1 = socket : jugadores.jugador2 = socket
 }
 
