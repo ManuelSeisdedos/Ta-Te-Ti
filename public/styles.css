@@ -137,3 +137,35 @@ input {
     border: 0;
     padding: 0px 20px;
 }
+
+.jugadores {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.nombre-usuario {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+ justify-content: center;
+}
+
+
+.nombre-usuario input {
+    height: auto;
+    width: 50%;
+    border-radius: 5px;
+    height: 70%;
+}
+
+#usuario-1 {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombre-usuario button {
+    height: 70%;
+}

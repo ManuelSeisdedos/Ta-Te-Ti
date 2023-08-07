@@ -21,7 +21,6 @@ function contador(jugador) {
 
 function terminoElJuego() {
     if (tablero[0] === tablero[1] && tablero[1] === tablero[2]) {
-        console.log(tablero[0])
         return `Ganó el jugador --> ${tablero[0]}`
     }
     if (tablero[3] === tablero[4] && tablero[4] === tablero[5]) {
@@ -84,6 +83,7 @@ function click (jugador) {
 function jugar(socket) {
     if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") return console.log("Se esta jugando una partida, espera tu turno")
     jugadores.jugador1 === "" ? jugadores.jugador1 = socket : jugadores.jugador2 = socket
+
 }
 
 function botones (socket,jugador ) {
@@ -96,6 +96,14 @@ function botones (socket,jugador ) {
     }
    
 }
+
+function sala (data) {
+    if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") return null
+    if (jugadores.jugador1 === "") {return "jugador1"} else {
+    return "jugador2"
+    }
+    
+}
 export default {
     ponerFicha,
     contador,
@@ -104,5 +112,6 @@ export default {
     jugarTateti,
     click,
     jugar,
-    botones
+    botones,
+    sala
 }
