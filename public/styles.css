@@ -141,7 +141,9 @@ input {
 .jugadores {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .nombre-usuario {
@@ -161,9 +163,9 @@ input {
 }
 
 #usuario-1 {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .nombre-usuario button {

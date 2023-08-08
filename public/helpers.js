@@ -7,6 +7,11 @@ let jugadores = {
     jugador2: ""
 }
 
+let usuarios = {
+    usuario1:false,
+    usuario2:false
+}
+
 function ponerFicha(id) {
     id = id - 1
     tablero[id] = fichas.shift()
@@ -96,14 +101,20 @@ function botones (socket,jugador ) {
     }
    
 }
+console.log(usuarios)
 
 function sala (data) {
-    if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") return null
-    if (jugadores.jugador1 === "") {return "jugador1"} else {
-    return "jugador2"
+    console.log("USUARIOS2",usuarios)
+    if (usuarios.usuario1 && usuarios.usuario2) return null
+    if (!usuarios.usuario1) {
+        usuarios.usuario1 = data
+        return "jugador1"
+    } if (!usuarios.usuario2) {
+        usuarios.usuario2 = data
+        return "jugador2"
     }
-    
 }
+
 export default {
     ponerFicha,
     contador,

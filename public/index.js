@@ -59,7 +59,7 @@ botonJugar.addEventListener('click', () => {
 })
 
 botonJugar.addEventListener('click', () => {
-    console.log(nombreusuario)
+    console.log(nombreusuario.value)
     socket.emit('play:sala', nombreusuario.value)
 })
 
@@ -69,22 +69,20 @@ socket.on('play:jugar', (socket) => {
 })
 
 socket.on('play:sala', (data) => {
+  let jugador = helper.sala(data)
 
-    
-    
-  let jugador = helper.sala()
-  console.log(jugador)
   if (jugador === null) return console.log("ya hay un juego empezado")
   if (jugador === "jugador1"){
-    let salajugador1 = document.getElementById('sala-jugador-1')
     salajugador1.innerHTML = data
   } else{
+    console.log(salajugador2)
     salajugador2.innerHTML = data
   }
 })
 
 
 
-let salajugador1 = document.getElementById('sala-jugador-1')
-let salajugador2 = document.getElementById('sala-jugador-2')
+const salajugador1 = document.getElementById('sala-jugador-1')
+const salajugador2 = document.getElementById('sala-jugador-2')
 let nombreusuario = document.getElementById('usuario1')
+console.log(salajugador2)
