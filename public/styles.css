@@ -142,7 +142,7 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
 }
 
@@ -162,12 +162,15 @@ input {
     height: 70%;
 }
 
-#usuario-1 {
-    
-    align-items: flex-start;
-    justify-content: flex-start;
-}
+
 
 .nombre-usuario button {
     height: 70%;
+}
+
+.jugadores #sala-jugador-1 {
+    display: flex;
+    color: black;
+    justify-content: center;
+    
 }
