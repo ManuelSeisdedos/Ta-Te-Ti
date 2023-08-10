@@ -7,11 +7,13 @@ let actions = document.getElementById('actions')
 const botonesTateti = document.querySelectorAll(".ubicacion");
 const botonReiniciar = document.getElementById('reiniciar')
 const botonJugar = document.getElementById('jugar')
+const salajugador1 = document.getElementById('sala-jugador-1')
+const salajugador2 = document.getElementById('sala-jugador-2')
+let nombreusuario = document.getElementById('usuario1')
 
 import helper from './helpers.js'
 
 const socket = io();
-
 
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
@@ -55,34 +57,31 @@ socket.on('play:click', function (data) {
     helper.click(jugador)})
 
 botonJugar.addEventListener('click', () => {
-    socket.emit('play:jugar', socket.id)
+    let combo = [socket.id, nombreusuario.value]
+    socket.emit('play:jugar', combo)
 })
 
-botonJugar.addEventListener('click', () => {
-    console.log(nombreusuario.value)
-    socket.emit('play:sala', nombreusuario.value)
-})
-
-socket.on('play:jugar', (socket) => {
-    
-    helper.jugar(socket)
-})
-
-socket.on('play:sala', (data) => {
-  let jugador = helper.sala(data)
-
-  if (jugador === null) return console.log("ya hay un juego empezado")
+socket.on('play:jugar', (data) => {
+    let jugador = helper.jugar(data)
+      if (jugador === null) return console.log("ya hay un juego empezado")
   if (jugador === "jugador1"){
-    salajugador1.innerHTML = data
-  } else{
+    salajugador1.innerHTML = data[1]
+  } else if (jugador === "jugador2") {
     console.log(salajugador2)
-    salajugador2.innerHTML = data
+   salajugador2.innerHTML = data[1]
   }
+   else {return console.log("retorna aca")}
 })
 
+// socket.on('play:sala', (data) => {
+//   let jugador = helper.sala(data,socket.id)
 
-
-const salajugador1 = document.getElementById('sala-jugador-1')
-const salajugador2 = document.getElementById('sala-jugador-2')
-let nombreusuario = document.getElementById('usuario1')
-console.log(salajugador2)
+//   if (jugador === null) return console.log("ya hay un juego empezado")
+//   if (jugador === "jugador1"){
+//     salajugador1.innerHTML = data
+//   } else if (jugador === "jugador2") {
+//     console.log(salajugador2)
+//     salajugador2.innerHTML = data
+//   }
+//   else {return console.log("retorna aca")}
+// })

@@ -85,9 +85,19 @@ function click (jugador) {
 }
 }
 
-function jugar(socket) {
-    if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") return console.log("Se esta jugando una partida, espera tu turno")
-    jugadores.jugador1 === "" ? jugadores.jugador1 = socket : jugadores.jugador2 = socket
+function jugar(data) {
+    console.log(usuarios.usuario1)
+    if (usuarios.usuario1 && usuarios.usuario2) return console.log("Se esta jugando una partida")
+    jugadores.jugador1 === "" ? jugadores.jugador1 = data[0] : jugadores.jugador2 = data[0]
+    if (usuarios.usuario1 === data[0] || usuarios.usuario2 === data[0]) console.log("ya estas en sala")
+    if (usuarios.usuario1 === false) {
+        usuarios.usuario1 = data[0]
+        return "jugador1"
+    } if (usuarios.usuario2 === false) {
+        usuarios.usuario2 = data[0]
+        return "jugador2"
+    }
+   
 
 }
 
@@ -101,19 +111,6 @@ function botones (socket,jugador ) {
     }
    
 }
-console.log(usuarios)
-
-function sala (data) {
-    console.log("USUARIOS2",usuarios)
-    if (usuarios.usuario1 && usuarios.usuario2) return null
-    if (!usuarios.usuario1) {
-        usuarios.usuario1 = data
-        return "jugador1"
-    } if (!usuarios.usuario2) {
-        usuarios.usuario2 = data
-        return "jugador2"
-    }
-}
 
 export default {
     ponerFicha,
@@ -123,6 +120,5 @@ export default {
     jugarTateti,
     click,
     jugar,
-    botones,
-    sala
+    botones
 }
