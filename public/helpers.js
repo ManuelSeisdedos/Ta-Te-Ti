@@ -53,6 +53,8 @@ function terminoElJuego() {
 }
 
 function reinicio (botonesTateti) {
+    usuarios.usuario1 = false
+    usuarios.usuario2 = false
     jugadores.jugador1 = ""
     jugadores.jugador2 = ""
     fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]

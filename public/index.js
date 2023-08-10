@@ -71,16 +71,3 @@ socket.on('play:jugar', (data) => {
    salajugador2.innerHTML = data[1]
   }
 })
-
-// socket.on('play:sala', (data) => {
-//   let jugador = helper.sala(data,socket.id)
-
-//   if (jugador === null) return console.log("ya hay un juego empezado")
-//   if (jugador === "jugador1"){
-//     salajugador1.innerHTML = data
-//   } else if (jugador === "jugador2") {
-//     console.log(salajugador2)
-//     salajugador2.innerHTML = data
-//   }
-//   else {return console.log("retorna aca")}
-// })
