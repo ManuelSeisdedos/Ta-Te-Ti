@@ -87,9 +87,10 @@ function click (jugador) {
 
 function jugar(data) {
     console.log(usuarios.usuario1)
-    if (usuarios.usuario1 && usuarios.usuario2) return console.log("Se esta jugando una partida")
+    console.log(data[0])
+    if (usuarios.usuario1 == data[0] || usuarios.usuario2 == data[0]) return console.log("ya estas en sala")
+    if (usuarios.usuario1 && usuarios.usuario2) return null
     jugadores.jugador1 === "" ? jugadores.jugador1 = data[0] : jugadores.jugador2 = data[0]
-    if (usuarios.usuario1 === data[0] || usuarios.usuario2 === data[0]) console.log("ya estas en sala")
     if (usuarios.usuario1 === false) {
         usuarios.usuario1 = data[0]
         return "jugador1"

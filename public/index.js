@@ -63,14 +63,13 @@ botonJugar.addEventListener('click', () => {
 
 socket.on('play:jugar', (data) => {
     let jugador = helper.jugar(data)
-      if (jugador === null) return console.log("ya hay un juego empezado")
+      if (jugador === null) return alert("ya hay un juego empezado")
   if (jugador === "jugador1"){
     salajugador1.innerHTML = data[1]
   } else if (jugador === "jugador2") {
     console.log(salajugador2)
    salajugador2.innerHTML = data[1]
   }
-   else {return console.log("retorna aca")}
 })
 
 // socket.on('play:sala', (data) => {
