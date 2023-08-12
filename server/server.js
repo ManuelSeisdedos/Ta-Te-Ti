@@ -44,6 +44,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('play:jugar', (data) => {
+     
       io.sockets.emit('play:jugar', data)
     })
 });
