@@ -12,6 +12,8 @@ let usuarios = {
     usuario2:false
 }
 
+let ultimoJugador = false
+
 function ponerFicha(id) {
     id = id - 1
     tablero[id] = fichas.shift()
@@ -88,8 +90,7 @@ function click (jugador) {
 }
 
 function jugar(data) {
-    console.log(usuarios.usuario1)
-    console.log(data[0])
+   
     if (usuarios.usuario1 == data[0] || usuarios.usuario2 == data[0]) return console.log("ya estas en sala")
     if (usuarios.usuario1 && usuarios.usuario2) return null
     jugadores.jugador1 === "" ? jugadores.jugador1 = data[0] : jugadores.jugador2 = data[0]
@@ -115,6 +116,14 @@ function botones (socket,jugador ) {
    
 }
 
+
+function ultimoEnJugar (socket) {
+    
+    if (ultimoJugador === socket) return true
+    ultimoJugador = socket
+    return false
+}
+
 export default {
     ponerFicha,
     contador,
@@ -123,5 +132,6 @@ export default {
     jugarTateti,
     click,
     jugar,
-    botones
+    botones,
+    ultimoEnJugar
 }

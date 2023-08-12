@@ -57,6 +57,7 @@ socket.on('play:click', function (data) {
     helper.click(jugador)})
 
 botonJugar.addEventListener('click', () => {
+    if (helper.ultimoEnJugar(socket.id)) return
     let combo = [socket.id, nombreusuario.value]
     socket.emit('play:jugar', combo)
 })
