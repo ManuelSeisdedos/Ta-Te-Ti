@@ -44,7 +44,6 @@ io.on('connection', (socket) => {
     })
 
     socket.on('play:jugar', (data) => {
-      console.log(data)
       io.sockets.emit('play:jugar', data)
     })
 });
