@@ -10,7 +10,7 @@ const botonJugar = document.getElementById('jugar')
 const salajugador1 = document.getElementById('sala-jugador-1')
 const salajugador2 = document.getElementById('sala-jugador-2')
 let nombreusuario = document.getElementById('usuario1')
-
+import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/+esm'
 import helper from './helpers.js'
 
 const socket = io();
@@ -24,10 +24,14 @@ botonesTateti.forEach(boton => {
 
 botonReiniciar.addEventListener('click', function () {
     socket.emit('play:reiniciar')
+    
 })
 
 socket.on('play:reiniciar', () => {
 helper.reinicio(botonesTateti)
+salajugador1.innerHTML = ""
+salajugador2.innerHTML = ""
+nombreusuario.value = ""
 })
 
 btn.addEventListener('click', function () {
@@ -57,16 +61,25 @@ socket.on('play:click', function (data) {
     helper.click(jugador,data[0])})
 
 botonJugar.addEventListener('click', () => {
+    if (helper.jugadores.jugador1 !== "" && helper.jugadores.jugador2 !== "") {
+        return Swal.fire({
+            title: "Espere su turno", 
+            icon: 'error',
+            text:"Se esta jugando una partida"
+        })
+    }
     let combo = [socket.id, nombreusuario.value]
     socket.emit('play:jugar', combo)
 })
 
 socket.on('play:jugar', (data) => {
     let jugador = helper.jugar(data)
-      if (jugador === null) return console.log("ya hay un juego empezado")
+
   if (jugador === "jugador1"){
+    nombreusuario.value = ""
     salajugador1.innerHTML = data[1]
   } else if (jugador === "jugador2") {
+    nombreusuario.value = ""
    salajugador2.innerHTML = data[1]
   }
 })

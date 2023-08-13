@@ -72,7 +72,9 @@ function reinicio (botonesTateti) {
 
 function jugarTateti() {
     if (jugadores.jugador1 !== "" && jugadores.jugador2 !== "") {
-        "No hay espacio disponible"
+        Swal.fire({
+            text: "No hay espacio disponible"
+        })
     }
     if (jugadores.jugador1 === "") jugadores.jugador1 === socket.id
     if (jugadores.jugador2 === "") jugadores.jugador2 === socket.id
@@ -143,5 +145,6 @@ export default {
     click,
     jugar,
     botones,
-    ultimoEnJugar
+    ultimoEnJugar,
+    jugadores
 }
