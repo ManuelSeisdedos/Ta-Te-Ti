@@ -4,7 +4,6 @@ import * as socketIO from 'socket.io';
 import { resolve } from 'path';
 import { createServer } from 'http';
 import { fileURLToPath } from 'url';
-import { Console } from 'console';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

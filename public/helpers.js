@@ -1,3 +1,5 @@
+import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/+esm'
+
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
 let termino = 0;
@@ -55,6 +57,7 @@ function terminoElJuego() {
 }
 
 function reinicio (botonesTateti) {
+    ultimoJugador = false
     usuarios.usuario1 = false
     usuarios.usuario2 = false
     jugadores.jugador1 = ""
@@ -88,11 +91,13 @@ function click (jugador, socket) {
             let jugador = terminoElJuego().slice(-1)
             termino = 1
             contador(jugador)
-            return setTimeout(() => alert(terminoElJuego()), 100)
-}
-    }
-    
-}
+            return setTimeout(() => Swal.fire({
+                title: "Terminó el juego",
+                text: terminoElJuego(),
+                icon: 'success'
+            }), 100)
+}}}
+
 
 function jugar(data) {
     
