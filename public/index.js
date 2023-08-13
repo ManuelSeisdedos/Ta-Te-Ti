@@ -53,8 +53,8 @@ socket.on('chat:typing', function (data) {
 })
 
 socket.on('play:click', function (data) {
-    let jugador = document.getElementById(data.jugador)
-    helper.click(jugador)})
+    let jugador = document.getElementById(data[1].jugador)
+    helper.click(jugador,data[0])})
 
 botonJugar.addEventListener('click', () => {
     let combo = [socket.id, nombreusuario.value]
@@ -67,7 +67,6 @@ socket.on('play:jugar', (data) => {
   if (jugador === "jugador1"){
     salajugador1.innerHTML = data[1]
   } else if (jugador === "jugador2") {
-    console.log(salajugador2)
    salajugador2.innerHTML = data[1]
   }
 })

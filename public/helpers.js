@@ -75,9 +75,12 @@ function jugarTateti() {
     if (jugadores.jugador2 === "") jugadores.jugador2 === socket.id
 }
 
-function click (jugador) {
-    
-    if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
+function click (jugador, socket) {
+    if (ultimoJugador === socket) {
+        return console.log("Espere su turno")
+    } else {
+        ultimoJugador = socket
+        if(typeof tablero[jugador.id - 1] !== "number" || termino === 1 ) return
         sonido.play()
         jugador.innerHTML = fichas[0]
         ponerFicha(jugador.id)
@@ -87,10 +90,12 @@ function click (jugador) {
             contador(jugador)
             return setTimeout(() => alert(terminoElJuego()), 100)
 }
+    }
+    
 }
 
 function jugar(data) {
-   
+    
     if (usuarios.usuario1 == data[0] || usuarios.usuario2 == data[0]) return console.log("ya estas en sala")
     if (usuarios.usuario1 && usuarios.usuario2) return null
     jugadores.jugador1 === "" ? jugadores.jugador1 = data[0] : jugadores.jugador2 = data[0]
@@ -99,6 +104,7 @@ function jugar(data) {
         return "jugador1"
     } if (usuarios.usuario2 === false) {
         usuarios.usuario2 = data[0]
+        ultimoJugador = data[0]
         return "jugador2"
     }
    
@@ -106,10 +112,9 @@ function jugar(data) {
 }
 
 function botones (socket,jugador ) {
+    let combo = [socket.id, {jugador: jugador.id}]
     if(socket.id === jugadores.jugador1 || socket.id === jugadores.jugador2) {
-        socket.emit('play:click', {
-            jugador: jugador.id,
-        })
+        socket.emit('play:click', combo)
     } else {
         return console.log("No eres jugador de la sala.")
     }
