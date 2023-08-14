@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const port = process.env.PORT || 3000;
-const publicPath = resolve(__dirname, '../public');
+const publicPath = resolve(__dirname, '../public/index.html');
 const app = express();
 let server = createServer(app)
 
