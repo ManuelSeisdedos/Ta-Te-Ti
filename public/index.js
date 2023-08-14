@@ -23,7 +23,7 @@ botonesTateti.forEach(boton => {
 })
 
 botonReiniciar.addEventListener('click', function () {
-    if (!helper.termino) return Swal.fire({
+    if (helper.termino) return Swal.fire({
         title: 'Existe una partida en juego',
         icon: 'error',
         text: 'Aguarde a que termine la partida'
@@ -62,7 +62,7 @@ socket.on('chat:typing', function (data) {
 
 socket.on('play:click', function (data) {
     let jugador = document.getElementById(data[1].jugador)
-    helper.click(jugador,data[0])})
+    console.log(helper.click(jugador,data[0]))})
 
 botonJugar.addEventListener('click', () => {
     if (helper.jugadores.jugador1 !== "" && helper.jugadores.jugador2 !== "") {
