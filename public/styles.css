@@ -1,4 +1,3 @@
-
 body {
     margin:0px;
     height: 100vh;
@@ -8,13 +7,11 @@ body {
 }
 
 .container { 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 30px auto;
-
 }
 
 .contador {
@@ -173,4 +170,71 @@ input {
     color: black;
     justify-content: center;
     
+}
+
+@media (max-width: 600px) {
+
+body {
+    font-family: 'Crimson Pro', serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.container { 
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+   height: 100%;
+}
+
+.ta-te-ti { 
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    padding: 10px;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contador .contadores {
+    display: none;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Playfair Display";
+}
+
+.contador h2 {
+    display: none;
+}
+.nombre-usuario {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+ justify-content: center;
+}
+
+
+#chat-container {
+    display: none;
+}
+
+#send {
+    background: #575ed8;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px ;
+}
+
+.jugadores {
+    padding-left: 10%;
+}
 }

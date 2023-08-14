@@ -68,6 +68,7 @@ botonJugar.addEventListener('click', () => {
             text:"Se esta jugando una partida"
         })
     }
+    username.value = nombreusuario.value
     let combo = [socket.id, nombreusuario.value]
     socket.emit('play:jugar', combo)
 })
