@@ -163,6 +163,8 @@ input {
 
 .nombre-usuario button {
     height: 70%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .jugadores #sala-jugador-1 {

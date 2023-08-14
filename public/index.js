@@ -23,8 +23,12 @@ botonesTateti.forEach(boton => {
 })
 
 botonReiniciar.addEventListener('click', function () {
+    if (!helper.termino) return Swal.fire({
+        title: 'Existe una partida en juego',
+        icon: 'error',
+        text: 'Aguarde a que termine la partida'
+    }) 
     socket.emit('play:reiniciar')
-    
 })
 
 socket.on('play:reiniciar', () => {
