@@ -62,7 +62,7 @@ socket.on('chat:typing', function (data) {
 
 socket.on('play:click', function (data) {
     let jugador = document.getElementById(data[1].jugador)
-    console.log(helper.click(jugador,data[0]))})
+    helper.click(jugador,data[0])})
 
 botonJugar.addEventListener('click', () => {
     if (helper.jugadores.jugador1 !== "" && helper.jugadores.jugador2 !== "") {

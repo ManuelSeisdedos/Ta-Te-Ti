@@ -82,7 +82,10 @@ function jugarTateti() {
 
 function click (jugador, socket) {
     if (ultimoJugador === socket) {
-        return console.log("Espere su turno")
+        return Swal.fire({
+            title: 'Espere su turno',
+            icon: 'error',
+            })
     } else {
         ultimoJugador = socket
         if(typeof tablero[jugador.id - 1] !== "number" || termino === true ) return
