@@ -13,6 +13,9 @@ const app = express();
 let server = createServer(app)
 
 app.use(express.static(publicPath));
+app.get('/', (req,res) => {
+  res.render(publicPath)
+})
 console.log(publicPath)
 server.listen(port, (err) => {
     if (err) throw new Error(err);
