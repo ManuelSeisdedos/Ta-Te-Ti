@@ -13,9 +13,6 @@ const app = express();
 let server = createServer(app)
 
 app.use(express.static(publicPath));
-app.get('/', (req,res) => {
-  
-})
 server.listen(port, (err) => {
     if (err) throw new Error(err);
     console.log(`Servidor corriendo en puerto ${ port }`);
