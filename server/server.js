@@ -12,8 +12,8 @@ const publicPath = resolve(__dirname, '../public');
 const app = express();
 let server = createServer(app)
 
-app.use('/', express.static(publicPath));
-
+app.use(express.static(publicPath));
+console.log(publicPath)
 server.listen(port, (err) => {
     if (err) throw new Error(err);
     console.log(`Servidor corriendo en puerto ${ port }`);
