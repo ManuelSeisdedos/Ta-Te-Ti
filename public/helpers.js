@@ -1,4 +1,5 @@
 import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/+esm'
+import index from './index.js'
 
 let fichas = ["X", "O", "X", "O", "X", "O", "X","O","X"]
 let tablero = [1,2,3,4,5,6,7,8,9]
@@ -30,30 +31,37 @@ function contador(jugador) {
 
 function terminoElJuego() {
     if (tablero[0] === tablero[1] && tablero[1] === tablero[2]) {
-        return `Ganó el jugador --> ${tablero[0]}`
+       return ganador(tablero[0])
     }
     if (tablero[3] === tablero[4] && tablero[4] === tablero[5]) {
-        return `Ganó el jugador --> ${tablero[3]}`
+        return ganador(tablero[3])
     }
     if (tablero[6] === tablero[7] && tablero[7] === tablero[8]) {
-        return `Ganó el jugador --> ${tablero[6]}`
+        return ganador(tablero[6])
     }
     if (tablero[0] === tablero[3] && tablero[3] === tablero[6]) {
-        return `Ganó el jugador --> ${tablero[0]}`
+        return ganador(tablero[0])
     }
     if (tablero[1] === tablero[4] && tablero[4] === tablero[7]) {
-        return `Ganó el jugador --> ${tablero[1]}`
+        return ganador(tablero[1])
     }
     if (tablero[2] === tablero[5] && tablero[5] === tablero[8]) {
-        return `Ganó el jugador --> ${tablero[2]}`
+        return ganador(tablero[2])
     }
     if (tablero[0] === tablero[4] && tablero[4] === tablero[8]) {
-        return `Ganó el jugador --> ${tablero[0]}`
+        return ganador(tablero[0])
     }
     if (tablero[6] === tablero[4] && tablero[4] === tablero[2]) {
-        return `Ganó el jugador --> ${tablero[6]}`
+        return ganador(tablero[6])
     }
     if (fichas.length === 0) return "El juego terminó en empate"
+}
+
+function ganador (ficha) {
+    if (ficha === 'X') {
+        return `Gano el jugador ${index.salajugador1.innerHTML}`
+    }
+    return `Gano el jugador ${index.salajugador2.innerHTML}`
 }
 
 function reinicio (botonesTateti) {

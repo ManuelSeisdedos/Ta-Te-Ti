@@ -88,3 +88,8 @@ socket.on('play:jugar', (data) => {
    salajugador2.innerHTML = data[1]
   }
 })
+
+export default {
+    salajugador1,
+    salajugador2
+}
