@@ -89,12 +89,7 @@ function jugarTateti() {
 }
 
 function click (jugador, socket) {
-    if (ultimoJugador === socket) {
-        return Swal.fire({
-            title: 'Espere su turno',
-            icon: 'error',
-            })
-    } else {
+  
         ultimoJugador = socket
         if(typeof tablero[jugador.id - 1] !== "number" || termino === true ) return
         sonido.play()
@@ -111,7 +106,7 @@ function click (jugador, socket) {
                 text: terminoElJuego(),
                 icon: 'success'
             }), 100)
-}}}
+}}
 
 
 function jugar(data) {
@@ -134,6 +129,12 @@ function jugar(data) {
 function botones (socket,jugador ) {
     let combo = [socket.id, {jugador: jugador.id}]
     if(socket.id === jugadores.jugador1 || socket.id === jugadores.jugador2) {
+        if (ultimoJugador === socket.id) {
+            return Swal.fire({
+                title: 'Espere su turno',
+                icon: 'error',
+                })
+        }
         socket.emit('play:click', combo)
     } else {
         return console.log("No eres jugador de la sala.")
@@ -159,5 +160,6 @@ export default {
     jugar,
     botones,
     ultimoEnJugar,
-    jugadores
+    jugadores,
+    ultimoJugador
 }

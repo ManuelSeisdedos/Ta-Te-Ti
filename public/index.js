@@ -18,11 +18,13 @@ const socket = io();
 botonesTateti.forEach(boton => {
     let jugador = document.getElementById(boton.id)
     boton.addEventListener('click', () => {
+        
        helper.botones(socket,jugador)
     })
 })
 
 botonReiniciar.addEventListener('click', function () {
+
     if (helper.termino) return Swal.fire({
         title: 'Existe una partida en juego',
         icon: 'error',
