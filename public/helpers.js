@@ -97,9 +97,7 @@ function click (jugador, socket) {
         ponerFicha(jugador.id)
         if (terminoElJuego() !== undefined) {
             let jugador = terminoElJuego().slice(-1)
-            console.log("termino", termino)
             termino = true
-            console.log("termino2", termino)
             contador(jugador)
             return setTimeout(() => Swal.fire({
                 title: "Terminó el juego",
