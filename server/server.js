@@ -12,15 +12,8 @@ const publicPath = resolve(__dirname, '../public');
 const app = express();
 let server = createServer(app)
 
-// app.use(express.static(publicPath));
+app.use(express.static(publicPath));
 
- server.get('/health', (req,res) => {
-   res.status(200).json(
-     {
-       "name":"Hola"
-     }
- )
-})
 
 
 server.listen(port, (err) => {
