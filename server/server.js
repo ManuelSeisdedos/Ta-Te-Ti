@@ -14,7 +14,7 @@ let server = createServer(app)
 
 // app.use(express.static(publicPath));
 
- app.get('/health', (req,res) => {
+ server.get('/health', (req,res) => {
    res.status(200).json(
      {
        "name":"Hola"
