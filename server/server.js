@@ -14,13 +14,13 @@ let server = createServer(app)
 
 app.use(express.static(publicPath));
 
-// app.get('/health', (req,res) => {
-//   res.status(200).json(
-//     {
-//       "name":"Hola"
-//     }
-//   )
-//  })
+ app.get('/health', (req,res) => {
+   res.status(200).json(
+     {
+       "name":"Hola"
+     }
+ )
+})
 
 
 server.listen(port, (err) => {
