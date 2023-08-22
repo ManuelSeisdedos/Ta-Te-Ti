@@ -12,7 +12,7 @@ const publicPath = resolve(__dirname, '../public');
 const app = express();
 let server = createServer(app)
 
-app.use(express.static(publicPath));
+// app.use(express.static(publicPath));
 
  app.get('/health', (req,res) => {
    res.status(200).json(
