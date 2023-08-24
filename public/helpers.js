@@ -89,26 +89,25 @@ function jugarTateti() {
 }
 
 function click (jugador, socket) {
-  
-        ultimoJugador = socket
-        if(typeof tablero[jugador.id - 1] !== "number" || termino === true ) return
-        sonido.play()
-        jugador.innerHTML = fichas[0]
-        ponerFicha(jugador.id)
-        if (terminoElJuego() !== undefined) {
-            let jugador = terminoElJuego().slice(-1)
-            termino = true
-            contador(jugador)
-            return setTimeout(() => Swal.fire({
-                title: "Terminó el juego",
-                text: terminoElJuego(),
-                icon: 'success'
-            }), 100)
-}}
+    ultimoJugador = socket
+    if(typeof tablero[jugador.id - 1] !== "number" || termino === true ) return
+    sonido.play()
+    jugador.innerHTML = fichas[0]
+    ponerFicha(jugador.id)
+    if (terminoElJuego() !== undefined) {
+        let jugador = terminoElJuego().slice(-1)
+        termino = true
+        contador(jugador)
+        return setTimeout(() => Swal.fire({
+            title: "Terminó el juego",
+            text: terminoElJuego(),
+            icon: 'success'
+        }), 100)
+    }
+}
 
 
 function jugar(data) {
-    
     if (usuarios.usuario1 == data[0] || usuarios.usuario2 == data[0]) return console.log("ya estas en sala")
     if (usuarios.usuario1 && usuarios.usuario2) return null
     jugadores.jugador1 === "" ? jugadores.jugador1 = data[0] : jugadores.jugador2 = data[0]
@@ -120,8 +119,6 @@ function jugar(data) {
         ultimoJugador = data[0]
         return "jugador2"
     }
-   
-
 }
 
 function botones (socket,jugador ) {
@@ -159,5 +156,6 @@ export default {
     botones,
     ultimoEnJugar,
     jugadores,
-    ultimoJugador
+    ultimoJugador,
+    termino
 }
