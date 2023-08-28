@@ -21,6 +21,7 @@ body {
     justify-content: space-around;
     align-items: center;
     font-family: "Playfair Display";
+    font-size: large;
 }
 
 .contador button {
@@ -242,4 +243,30 @@ body {
    
     width: 90%;
 }
+}
+
+@media (max-width: 1500px)and (min-width: 601px) {
+
+    body {
+        max-height: 100vh;
+        height: 100vh;
+    }
+
+    .contador {
+        height: 30px;
+        padding-bottom: 5px;
+    }
+
+    .container {
+        margin: 0px auto
+    }
+    .ta-te-ti { 
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        padding: 8px;
+        border-radius: 100px;
+        justify-content: center;
+        align-items: center;
+    }
 }
