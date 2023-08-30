@@ -123,6 +123,7 @@ function jugar(data) {
 }
 
 function botones (socket,jugador ) {
+    if (jugador.innerHTML === "X" || jugador.innerHTML === "O") return
     let combo = [socket.id, {jugador: jugador.id}]
     if(socket.id === jugadores.jugador1 || socket.id === jugadores.jugador2) {
         if (ultimoJugador === socket.id) {
