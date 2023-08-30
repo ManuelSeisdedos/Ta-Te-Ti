@@ -123,7 +123,13 @@ function jugar(data) {
 }
 
 function botones (socket,jugador ) {
-    if (jugador.innerHTML === "X" || jugador.innerHTML === "O") return
+    if (jugador.innerHTML === "X" || jugador.innerHTML === "O") {
+    return Swal.fire({
+        title: 'Casilla usada',
+        icon: 'error',
+        text: 'elija una casilla vacia'
+        })
+    }
     let combo = [socket.id, {jugador: jugador.id}]
     if(socket.id === jugadores.jugador1 || socket.id === jugadores.jugador2) {
         if (ultimoJugador === socket.id) {
